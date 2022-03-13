@@ -41,6 +41,7 @@
     "@types/styled-components": "^5.1.7",
     "bignumber.js": "^9.0.0",
     "chart.js": "^2.9.4",
+    "eth-ens-namehash": "^2.0.8",
     "iframe-resizer-react": "^1.1.0",
     "lodash": "^4.17.20",
     "react": "^17.0.1",

@@ -14,6 +14,8 @@ import lotteryTicket from 'config/abi/lotteryNft.json'
 import masterChef from 'config/abi/masterchef.json'
 import sousChef from 'config/abi/sousChef.json'
 import sousChefBnb from 'config/abi/sousChefBnb.json'
+import ENS_ABI from 'config/abi/ens-registrar.json'
+import ENS_PUBLIC_RESOLVER_ABI from 'config/abi/ens-public-resolver.json'
 
 const useContract = (abi: AbiItem, address: string, contractOptions?: ContractOptions) => {
   const web3 = useWeb3()
@@ -75,5 +77,21 @@ export const useSousChef = (id) => {
   const abi = (rawAbi as unknown) as AbiItem
   return useContract(abi, config.contractAddress[process.env.REACT_APP_CHAIN_ID])
 }
+
+export function useENSRegistrarContract(withSignerIfPossible?: boolean) {
+  const ENS_REGISTRAR_ADDRESS = {
+    10000: '0x3596f09d70B454049Ce11390A3eeBfBf6a9e3945',
+    10001: '0x32f1FBE59D771bdB7FB247FE97A635f50659202b',
+  }
+
+  const chainId = process.env.REACT_APP_CHAIN_ID;
+  const address = ENS_REGISTRAR_ADDRESS[chainId];
+  return useContract(ENS_ABI as any, address)
+}
+
+export function useENSResolverContract(address: string | undefined, withSignerIfPossible?: boolean) {
+  return useContract(ENS_PUBLIC_RESOLVER_ABI as any, address)
+}
+
 
 export default useContract
