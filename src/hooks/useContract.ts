@@ -80,12 +80,12 @@ export const useSousChef = (id) => {
 
 export function useENSRegistrarContract(withSignerIfPossible?: boolean) {
   const ENS_REGISTRAR_ADDRESS = {
-    10000: '0x3596f09d70B454049Ce11390A3eeBfBf6a9e3945',
+    10000: '0xCfb86556760d03942EBf1ba88a9870e67D77b627',
     10001: '0x32f1FBE59D771bdB7FB247FE97A635f50659202b',
   }
 
-  const chainId = process.env.REACT_APP_CHAIN_ID;
-  const address = ENS_REGISTRAR_ADDRESS[chainId];
+  const chainId = process.env.REACT_APP_CHAIN_ID
+  const address = ENS_REGISTRAR_ADDRESS[chainId]
   return useContract(ENS_ABI as any, address)
 }
 
